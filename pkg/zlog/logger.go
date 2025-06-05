@@ -20,10 +20,14 @@ func init() {
 	encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder
 	// 日志 encoder 还是 JSONEncoder，把日志行格式化成 JSON 格式
 	encoder := zapcore.NewJSONEncoder(encoderConfig)
+
 	conf := config.GetConfig()
 	logPath = conf.LogPath
-	file, _ := os.OpenFile(logPath, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 644)
-	fileWriteSyncer := zapcore.AddSync(file)
+
+	// file, _ := os.OpenFile(logPath, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 644)
+	// fileWriteSyncer := zapcore.AddSync(file)
+	fileWriteSyncer := getFileLogWriter()
+
 	core := zapcore.NewTee(
 		zapcore.NewCore(encoder, zapcore.AddSync(os.Stdout), zapcore.DebugLevel),
 		zapcore.NewCore(encoder, fileWriteSyncer, zapcore.DebugLevel),
