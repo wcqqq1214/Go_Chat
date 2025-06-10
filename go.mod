@@ -1,4 +1,4 @@
-module go_chat
+module chat_server
 
 go 1.23.3
 

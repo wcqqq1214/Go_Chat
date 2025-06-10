@@ -1,8 +1,8 @@
 package kafka
 
 import (
-	myconfig "go_chat/internal/config"
-	"go_chat/pkg/zlog"
+	myconfig "chat_server/internal/config"
+	"chat_server/pkg/zlog"
 	"time"
 
 	"github.com/segmentio/kafka-go"

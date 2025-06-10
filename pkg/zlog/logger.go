@@ -1,7 +1,7 @@
 package zlog
 
 import (
-	"go_chat/internal/config"
+	"chat_server/internal/config"
 	"os"
 	"path"
 	"runtime"
